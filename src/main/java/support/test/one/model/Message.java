@@ -1,4 +1,4 @@
-package support.test.one;
+package support.test.one.model;
 
 import java.util.Date;
 
@@ -6,7 +6,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * This a {@link Message} data model which represent a instance of 
- * {@link Message} as if it was taken from a record in Database with Table name Messages 
+ * {@link Message} as if it was taken from a record in Database with Table name "Messages".
+ * @XmlRootElement annotation helps converting this class in XML formats
  * */
 @XmlRootElement
 public class Message {

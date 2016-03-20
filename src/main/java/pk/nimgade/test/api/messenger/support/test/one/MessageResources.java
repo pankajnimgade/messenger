@@ -7,8 +7,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import support.test.one.Message;
 import support.test.one.MessageService;
+import support.test.one.model.Message;
 
 /**
  * {@link MessageResources} is the class which is used to interact through API's. 
@@ -16,6 +16,8 @@ import support.test.one.MessageService;
  * */
 @Path("/messages")
 public class MessageResources {
+	
+	MessageService messageService = new MessageService();
 
 	public MessageResources() {
 		// TODO Auto-generated constructor stub
@@ -24,7 +26,7 @@ public class MessageResources {
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
 	public List<Message> getAllMessages(){
-		return MessageService.getMessages();
+		return messageService.getAllMessages();
 	}
 
 }
