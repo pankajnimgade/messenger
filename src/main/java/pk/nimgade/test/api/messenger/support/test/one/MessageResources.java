@@ -3,8 +3,10 @@ package pk.nimgade.test.api.messenger.support.test.one;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -44,6 +46,22 @@ public class MessageResources {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Message postMessage( Message message){
 		return messageService.addMessage(message);
+	}
+	
+	@PUT
+	@Path("/{messageID}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Message updateMessage(@PathParam("messageID") long messageID, Message message){
+		message.setId(messageID);
+		return messageService.updateMessage(message);
+	}
+	
+	@DELETE
+	@Path("/{messageID}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Message updateMessage(@PathParam("messageID") long messageID){
+		return messageService.deleteMessage(messageID);
 	}
 
 }
