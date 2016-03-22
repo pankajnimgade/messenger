@@ -1,8 +1,6 @@
 package pk.nimgade.test.api.messenger.support.test.one;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -14,10 +12,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.eclipse.persistence.annotations.DeleteAll;
-
 import support.test.one.ProfileService;
-import support.test.one.database.DatabaseClass;
 import support.test.one.model.Profile;
 
 @Path("/profiles")
