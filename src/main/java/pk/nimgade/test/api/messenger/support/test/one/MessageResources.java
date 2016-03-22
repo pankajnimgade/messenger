@@ -23,6 +23,8 @@ import support.test.one.model.Message;
  * API's. This class exposes the API's
  * */
 @Path("/messages")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class MessageResources {
 
 	MessageService messageService = new MessageService();
@@ -32,7 +34,6 @@ public class MessageResources {
 	}
 
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
 	public List<Message> getAllMessages(@QueryParam("year") int year,
 			@QueryParam("start") int start, @QueryParam("size") int size) {
 		if (year > 0) {
@@ -46,22 +47,17 @@ public class MessageResources {
 
 	@GET
 	@Path("/{messageID}")
-	@Produces(MediaType.APPLICATION_JSON)
 	public Message getMessage(@PathParam("messageID") long messageID) {
 		return messageService.getMessage(messageID);
 	}
 
 	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
 	public Message postMessage(Message message) {
 		return messageService.addMessage(message);
 	}
 
 	@PUT
 	@Path("/{messageID}")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
 	public Message updateMessage(@PathParam("messageID") long messageID,
 			Message message) {
 		message.setId(messageID);
@@ -70,9 +66,14 @@ public class MessageResources {
 
 	@DELETE
 	@Path("/{messageID}")
-	@Produces(MediaType.APPLICATION_JSON)
 	public Message updateMessage(@PathParam("messageID") long messageID) {
 		return messageService.deleteMessage(messageID);
+	}
+	
+
+	@Path("/{messageID}/comments")
+	public CommentResources getComments(@PathParam("messageID") long messageID) {
+		return new CommentResources();
 	}
 
 }
