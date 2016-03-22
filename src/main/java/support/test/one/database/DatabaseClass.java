@@ -13,14 +13,14 @@ import support.test.one.model.Profile;
 public class DatabaseClass {
 	
 	private static Map<Long, Message> messages = new HashMap<Long, Message>(); 
-	private static Map<Long, Profile> profiles = new HashMap<Long, Profile>(); 
+	private static Map<String, Profile> profiles = new HashMap<String, Profile>(); 
 	
 	static{
 		messages.put(1L, new Message(1L, "First message", "Panakj"));
 		messages.put(2L, new Message(2L, "Second message", "Panakj"));
 		
-		profiles.put(1L, new Profile(1L, "White", "Sherlock", "Holems"));
-		profiles.put(1L, new Profile(2L, "Black", "Dr", "Watson"));
+		profiles.put("White", new Profile(1L, "White", "Sherlock", "Holems"));
+		profiles.put("Black", new Profile(2L, "Black", "Dr", "Watson"));
 	}
 
 	public DatabaseClass() {
@@ -31,7 +31,7 @@ public class DatabaseClass {
 		return messages;
 	}
 	
-	public static Map<Long, Profile> getProfiles() {
+	public static Map<String, Profile> getProfiles() {
 		return profiles;
 	}
 
